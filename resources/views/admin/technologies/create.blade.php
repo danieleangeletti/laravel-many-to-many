@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', 'Add new type')
+@section('page-title', 'Add new technology')
 
 @section('main-content')
     <div class="row">
@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="text-center text-success">
-                        Add new type
+                        Add new technology
                     </h1>
 
                     @if ($errors->any())
@@ -21,7 +21,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('admin.types.store') }}" method="POST">
+                    <form action="{{ route('admin.technologies.store') }}" method="POST">
                         
                         @csrf
 
