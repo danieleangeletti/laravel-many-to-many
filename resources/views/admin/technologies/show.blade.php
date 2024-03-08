@@ -14,15 +14,15 @@
             </div>
         </div>
     </div>
-    {{-- <div class="row">
+    <div class="row">
         <div class="col">
             <div class="card">
                 <div class="card-body">
                     <h2 class="text-center text-success">
-                        All projects associated with this type
+                        All projects associated with this technology
                     </h2>
                     <ul>
-                        @foreach ($type->projects as $project)
+                        @foreach ($technology->projects as $project)
                             <li>
                                 <a href="{{ route('admin.projects.show', ['project' => $project->slug]) }}" class="link-offset-2 link-underline link-underline-opacity-0">
                                     {{ $project->title }}
@@ -33,5 +33,5 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 @endsection

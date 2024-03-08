@@ -38,9 +38,11 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @foreach ($project->technologies as $technology)
-                                            <span class="badge rounded-pill text-bg-primary">{{ $technology->title }}</span>
-                                        @endforeach
+                                        @forelse ($project->technologies as $technology)
+                                            <span class="badge rounded-pill text-bg-primary"><a href="{{ route('admin.technologies.show', ['technology' => $technology->id]) }}" class="text-white link-offset-2 link-underline link-underline-opacity-0">{{ $technology->title }}</a></span>
+                                        @empty
+                                            -
+                                        @endforelse
                                     </td>
                                     <td>{{ $project->slug }}</td>
                                     <td>{{ $project->content }}</td>
