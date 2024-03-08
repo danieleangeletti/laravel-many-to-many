@@ -13,4 +13,10 @@ class Technology extends Model
         'title',
         'slug'
     ];
+
+    // Relationships
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class);
+    }
 }

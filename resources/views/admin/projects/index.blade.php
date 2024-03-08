@@ -19,6 +19,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Type</th>
+                                <th scope="col">Technology</th>
                                 <th scope="col">Slug</th>
                                 <th scope="col">Content</th>
                                 <th scope="col">Actions</th>
@@ -35,6 +36,11 @@
                                         @else
                                             -
                                         @endif
+                                    </td>
+                                    <td>
+                                        @foreach ($project->technologies as $technology)
+                                            <span class="badge rounded-pill text-bg-primary">{{ $technology->title }}</span>
+                                        @endforeach
                                     </td>
                                     <td>{{ $project->slug }}</td>
                                     <td>{{ $project->content }}</td>
