@@ -27,6 +27,14 @@
                                 -
                             @endif
                     </p>
+                    <p>
+                        Technologies: 
+                            @forelse ($project->technologies as $technology)
+                                <a href="{{ route('admin.technologies.show', ['technology' => $technology->id]) }}" class="link-offset-2 link-underline link-underline-opacity-0">{{ $technology->title }}</a>
+                            @empty
+                                -
+                            @endforelse
+                    </p>
                 </div>
             </div>
         </div>
