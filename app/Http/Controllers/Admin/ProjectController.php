@@ -55,9 +55,11 @@ class ProjectController extends Controller
 
         $project->save();
 
-        foreach ($validated_data['technologies'] as $single_technology_id) {
-            // attach this technology_id to this project
-            $project->technologies()->attach($single_technology_id);
+        if (isset($validated_data['technologies'])) {
+            foreach ($validated_data['technologies'] as $single_technology_id) {
+                // attach this technology_id to this project
+                $project->technologies()->attach($single_technology_id);
+            }
         }
         ;
 
@@ -78,10 +80,11 @@ class ProjectController extends Controller
      */
     public function edit(string $slug)
     {
-        $types = Type::All();
+        $types = Type::all();
+        $technologies = Technology::all();
 
         $project = Project::where("slug", $slug)->firstOrFail();
-        return view("admin.projects.edit", compact("project", "types"));
+        return view("admin.projects.edit", compact("project", "types", "technologies"));
     }
 
     /**

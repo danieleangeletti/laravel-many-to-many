@@ -21,7 +21,7 @@
                         </div>
                     @endif
 
-                        <form action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST">
+                    <form action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST">
                         
                         @csrf
                         @method('PUT')
@@ -44,11 +44,23 @@
                                     <option value="{{ $type->id }}" {{ old('type_id', $project->type_id) == $type->id ? 'selected' : '' }}>{{ $type->title }}</option>
                                 @endforeach
                             </select>
-                            @error('type_id')
-                                <div class="alert alert-danger">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="technology" class="form-label">Technology</label>
+                            <div> 
+                                @foreach ($technologies as $technology)
+                                    <div class="form-check form-check-inline">
+                                        <input  {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                id="tag-{{ $technology->id }}"
+                                                name="technologies[]"
+                                                value="{{ $technology->id }}">
+                                        <label class="form-check-label" for="tag-{{ $technology->id }}">{{ $technology->title }}</label>
+                                    </div> 
+                                @endforeach
+                            </div>
                         </div>
 
                         <div class="mb-3">
