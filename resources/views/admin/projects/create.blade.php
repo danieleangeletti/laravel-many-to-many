@@ -51,6 +51,18 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="technology" class="form-label">Technology</label>
+                            <div> 
+                                @foreach ($technologies as $technology)
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="tag-{{ $technology->id }}" name="technologies[]" value="{{ $technology->id }}">
+                                        <label class="form-check-label" for="tag-{{ $technology->id }}">{{ $technology->title }}</label>
+                                    </div> 
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
                             <label for="content" class="form-label">Content</label>
                             <input type="text" class="form-control @error('content') is-invalid @enderror" id="content" name="content" placeholder="Insert content" value="{{ old('content') }}">
                             @error('content')

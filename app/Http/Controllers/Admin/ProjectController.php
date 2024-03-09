@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 // Models
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 
 // Form Requests
 use App\Http\Requests\StoreProjectRequest;
@@ -33,8 +34,10 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $types = Type::All();
-        return view("admin.projects.create", compact('types'));
+        $types = Type::all();
+        $technologies = Technology::all();
+
+        return view("admin.projects.create", compact('types', 'technologies'));
     }
 
     /**
@@ -51,6 +54,12 @@ class ProjectController extends Controller
         $project->type_id = $validated_data["type_id"];
 
         $project->save();
+
+        foreach ($validated_data['technologies'] as $single_technology_id) {
+            // attach this technology_id to this project
+            $project->technologies()->attach($single_technology_id);
+        }
+        ;
 
         return redirect()->route('admin.projects.show', ['project' => $project->slug]);
     }
