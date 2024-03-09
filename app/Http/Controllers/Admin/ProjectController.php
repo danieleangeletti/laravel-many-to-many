@@ -102,6 +102,18 @@ class ProjectController extends Controller
 
         $project->save();
 
+        // 1. no changes
+        // 2. add something
+        // 3. remove something
+        // 4. remove everything
+        // 5. remove and add something
+
+        if (isset($validated_data['technologies'])) {
+            $project->technologies()->sync($validated_data['technologies']);
+        } else {
+            $project->technologies()->detach();
+        }
+
         return redirect()->route('admin.projects.show', ['project' => $project->slug]);
     }
 
