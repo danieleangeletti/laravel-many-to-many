@@ -51,7 +51,12 @@
                             <div> 
                                 @foreach ($technologies as $technology)
                                     <div class="form-check form-check-inline">
-                                        <input  {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}
+                                        <input  @if ($errors->any())
+                                                {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}
+                                                {{-- differently from in_array, we now check if an element ($technology->id) is present in a COLLECTION ($project->technologies) --}}
+                                                @else
+                                                    {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}
+                                                @endif
                                                 class="form-check-input"
                                                 type="checkbox"
                                                 id="tag-{{ $technology->id }}"
