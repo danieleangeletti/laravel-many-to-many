@@ -11,13 +11,15 @@
                         {{$project->title}}
                     </h1>
 
-                    <h2>
-                        Slug: {{ $project->title }}
-                    </h2>
-
                     <p>
                         {{ $project->content }}
                     </p>
+                    
+                    @if ($project->cover_img != null)
+                        <div class="mb-3">
+                            <img src="/storage/{{ $project->cover_img }}">
+                        </div>
+                    @endif
 
                     <p>
                         Type: 

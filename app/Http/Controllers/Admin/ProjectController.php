@@ -48,13 +48,17 @@ class ProjectController extends Controller
     {
         $validated_data = $request->validated();
 
-        $cover_img_path = Storage::disk('public')->put('images', $validated_data['cover_img']);
+        $cover_img_path = null;
+        if (isset($validated_data['cover_img'])) {
+            $cover_img_path = Storage::disk('public')->put('images', $validated_data['cover_img']);
+        }
 
         $project = new Project($validated_data);
         $project->title = $validated_data["title"];
         $project->slug = Str::slug($validated_data["title"]);
         $project->content = $validated_data["content"];
         $project->type_id = $validated_data["type_id"];
+        $project->cover_img = $cover_img_path;
 
         $project->save();
 
