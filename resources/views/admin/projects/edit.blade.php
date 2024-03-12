@@ -71,6 +71,21 @@
                         <div class="mb-3">
                             <label for="cover_img" class="form-label">Cover image</label>
                             <input class="form-control" type="file" id="cover_img" name="cover_img">
+
+                            @if ($project->cover_img != null)
+                                <div class="mt-3 mb-3">
+                                    <h4>
+                                        Actual cover:
+                                    </h4>
+                                    <img src="/storage/{{ $project->cover_img }}">
+                                    <div class="form-check mt-1 mb-1">
+                                        <input class="form-check-input" type="checkbox" value="1" id="delete_cover_img" name="delete_cover_img">
+                                        <label class="form-check-label" for="delete_cover_img">
+                                            Delete img
+                                        </label>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
 
                         <div class="mb-3">
