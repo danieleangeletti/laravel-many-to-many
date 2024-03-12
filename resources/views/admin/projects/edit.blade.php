@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', $project->title.' EDIT')
+@section('page-title', $project->title . ' EDIT')
 
 @section('main-content')
     <div class="row">
@@ -21,7 +21,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST">
+                    <form action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST" enctype="multipart/form-data">
                         
                         @csrf
                         @method('PUT')
@@ -66,6 +66,11 @@
                                     </div> 
                                 @endforeach
                             </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cover_img" class="form-label">Cover image</label>
+                            <input class="form-control" type="file" id="cover_img" name="cover_img">
                         </div>
 
                         <div class="mb-3">

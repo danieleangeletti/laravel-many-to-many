@@ -16,6 +16,7 @@ use App\Http\Requests\StoreProjectRequest;
 
 // Helpers
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -46,6 +47,8 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $validated_data = $request->validated();
+
+        $cover_img_path = Storage::disk('public')->put('images', $validated_data['cover_img']);
 
         $project = new Project($validated_data);
         $project->title = $validated_data["title"];
