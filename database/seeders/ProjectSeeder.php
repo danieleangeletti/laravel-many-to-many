@@ -25,13 +25,15 @@ class ProjectSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         for ($i = 0; $i < 20; $i++) {
+            $cover_img_path = fake()->image(storage_path('/app/public/images'), 400, 400, null, false);
             $title = fake()->sentence();
             $slug = Str::slug($title);
             $project = Project::create([
                 'title' => $title,
                 'slug' => $slug,
                 'content' => fake()->paragraph(),
-                'type_id' => Type::inRandomOrder()->first()->id
+                'type_id' => Type::inRandomOrder()->first()->id,
+                'cover_img' => '/images/' . $cover_img_path
             ]);
         }
     }

@@ -13,6 +13,9 @@ class Technology extends Model
         'title',
         'slug'
     ];
+    protected $hidden = [
+        'id',
+    ];
 
     // Relationships
     public function projects()
