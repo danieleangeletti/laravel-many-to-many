@@ -45,7 +45,7 @@ class ProjectSeeder extends Seeder
                 'slug' => $slug,
                 'content' => fake()->paragraph(),
                 'type_id' => Type::inRandomOrder()->first()->id,
-                'cover_img' => '/images/' . $cover_img_path
+                'cover_img' => 'images/' . $cover_img_path
             ]);
         }
     }

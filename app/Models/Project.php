@@ -22,11 +22,15 @@ class Project extends Model
         'type_id'
     ];
 
+    protected $appends = [
+        'full_cover_img'
+    ];
+
     // full_cover_img
     public function getFullCoverImgAttribute()
     {
         if ($this->cover_img) {
-            return('/storage' . $this->cover_img);
+            return asset('/storage/' . $this->cover_img);
         } else {
             return null;
         }
