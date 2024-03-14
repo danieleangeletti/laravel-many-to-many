@@ -77,7 +77,7 @@
                                     <h4>
                                         Actual cover:
                                     </h4>
-                                    <img src="/storage/{{ $project->cover_img }}">
+                                    <img src="{{ $project->full_cover_img }}">
                                     <div class="form-check mt-1 mb-1">
                                         <input class="form-check-input" type="checkbox" value="1" id="delete_cover_img" name="delete_cover_img">
                                         <label class="form-check-label" for="delete_cover_img">

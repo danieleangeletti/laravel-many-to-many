@@ -17,7 +17,7 @@
                     
                     @if ($project->cover_img != null)
                         <div class="mb-3">
-                            <img src="/storage/{{ $project->cover_img }}">
+                            <img src="{{ $project->full_cover_img }}">
                         </div>
                     @endif
 

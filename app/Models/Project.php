@@ -22,6 +22,16 @@ class Project extends Model
         'type_id'
     ];
 
+    // full_cover_img
+    public function getFullCoverImgAttribute()
+    {
+        if ($this->cover_img) {
+            return('/storage' . $this->cover_img);
+        } else {
+            return null;
+        }
+    }
+
     // Relationships
     public function type()
     {
