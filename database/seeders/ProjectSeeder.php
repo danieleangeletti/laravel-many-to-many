@@ -36,7 +36,7 @@ class ProjectSeeder extends Seeder
         // Storage::disk('public')->deleteDirectory('images');
         // Storage::disk('public')->makeDirectory('images');
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $cover_img_path = fake()->image(storage_path('/app/public/images'), 400, 400, null, false);
             $title = fake()->sentence();
             $slug = Str::slug($title);

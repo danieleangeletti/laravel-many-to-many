@@ -17,6 +17,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">Cover</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Technology</th>
@@ -29,6 +30,9 @@
                             @foreach ($projects as $project)
                                 <tr>
                                     <th scope="row">{{ $project->id }}</th>
+                                    <td>
+                                        <img src="{{ $project->full_cover_img }}" class="cover-img">
+                                    </td>
                                     <td>{{ $project->title }}</td>
                                     <td>
                                         @if ($project->type != null)
