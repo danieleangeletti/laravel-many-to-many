@@ -18,9 +18,14 @@ class TypeSeeder extends Seeder
      */
     public function run(): void
     {
-        Schema::disableForeignKeyConstraints();
-        Type::truncate();
-        Schema::enableForeignKeyConstraints();
+        // Schema::disableForeignKeyConstraints();
+        // Type::truncate();
+        // Schema::enableForeignKeyConstraints();
+
+        $all_types = Type::all();
+        foreach ($all_types as $single_type) {
+            $single_type->delete();
+        }
 
         $all_types = [
             'Software/Application Development',

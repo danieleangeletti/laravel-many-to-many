@@ -18,9 +18,14 @@ class TechnologySeeder extends Seeder
      */
     public function run(): void
     {
-        Schema::disableForeignKeyConstraints();
-        Technology::truncate();
-        Schema::enableForeignKeyConstraints();
+        // Schema::disableForeignKeyConstraints();
+        // Technology::truncate();
+        // Schema::enableForeignKeyConstraints();
+
+        $all_technologies = Technology::all();
+        foreach ($all_technologies as $single_technology) {
+            $single_technology->delete();
+        }
 
         $all_technologies = [
             'HTML',
